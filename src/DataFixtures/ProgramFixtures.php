@@ -6,6 +6,7 @@ use App\Entity\Program;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+
 class ProgramFixtures extends Fixture implements DependentFixtureInterface
 {
     const PROGRAMS = [
@@ -44,7 +45,6 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             "synopsis" => "Scandinavie, à la fin du 8ème siècle. Ragnar Lodbrok, un jeune guerrier viking, est avide d'aventures et de nouvelles conquêtes. Lassé des pillages sur les terres de l'Est, il se met en tête d'explorer l'Ouest par la mer.",
             "category" => "category_Action"
         ],
-
     ];
     public function load(ObjectManager $manager): void
     {
