@@ -9,7 +9,8 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 class ProgramFixtures extends Fixture implements DependentFixtureInterface
 {
-    const PROGRAMS = [
+    public static int $numprograms = 0;
+    public const PROGRAMS = [
 
         [
             "title" => "Breaking Bad",
@@ -54,11 +55,13 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             $program->setSynopsis($value["synopsis"]);
             $program->setCategory($this->getReference($value["category"]));
             $manager->persist($program);
+            $this->addReference('program_' . $key, $program);
+            self::$numprograms++;
         }
         $manager->flush();
     }
 
-    public function getDependencies()
+    public function getDependencies(): array
     {
         return [
             CategoryFixtures::class,
